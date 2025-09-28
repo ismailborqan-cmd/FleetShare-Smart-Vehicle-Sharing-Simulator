@@ -1,0 +1,31 @@
+@startuml
+package domain {
+    class Vehicle
+    class Car
+    class EBike
+    class Trip
+    class User
+    class PricingStrategy
+    class TimeBasedPricing
+    class DistanceBasedPricing
+    class HybridPricing
+    class SurgeDecorator
+}
+
+package application {
+    class VehicleService
+    class TripService
+}
+
+Vehicle <|-- Car
+Vehicle <|-- EBike
+Trip --> User
+Trip --> Vehicle
+PricingStrategy <|-- TimeBasedPricing
+PricingStrategy <|-- DistanceBasedPricing
+PricingStrategy <|-- HybridPricing
+PricingStrategy <|-- SurgeDecorator
+VehicleService --> Vehicle
+TripService --> Trip
+TripService --> PricingStrategy
+@enduml
